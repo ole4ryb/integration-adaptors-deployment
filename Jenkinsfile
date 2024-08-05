@@ -26,14 +26,14 @@ pipeline {
     choice (name: "Action",      choices: ['plan', 'apply', 'plan-destroy', 'destroy'],           description: "Choose Terraform action")
     string (name: "Variables",   defaultValue: "",                                                description: "Terrafrom variables, format: variable1=value,variable2=value, no spaces")
     string (name: "Targets",     defaultValue: "",                                                description: "Resources to be targeted by plan/apply/destroy, format: [resource type1].[resource_name1],[resource type2].[resource name2], no spaces")
-    string (name: "Git_Branch",  defaultValue: "develop",                                         description: "Git branch from which TF will be taken")
-    string (name: "Git_Repo",    defaultValue: "https://github.com/nhsconnect/integration-adaptors.git", description: "Git Repo with TF Code")
+    string (name: "Git_Branch",  defaultValue: "main",                                            description: "Git branch from which TF will be taken")
+    string (name: "Git_Repo",    defaultValue: "https://github.com/NHSDigital/integration-adaptors-deployment.git", description: "Git Repo with TF Code")
   }
 
   stages {
     stage("Clone the repository") {
       steps {
-        dir ("integration-adaptors") {
+        dir ("integration-adaptors-deployment") {
           git (branch: params.Git_Branch, url: params.Git_Repo)
           script {
           //println(sh(label: "Check the directory contents", script: "ls -laR", returnStdout: true))
@@ -42,7 +42,7 @@ pipeline {
           currentBuild.description = "TF: ${params.Action} | env: ${params.Environment} | cmp: ${params.Component}"
           //println("TODO Clone the branch from Git_Branch")
           } // script
-        } // dir integration-adaptors
+        } // dir integration-adaptors-deployment
       }  // steps
     } // stage Clone
 
@@ -51,7 +51,7 @@ pipeline {
         lock("${params.Project}-${params.Environment}-${params.Component}")
       }
       steps {
-        dir("integration-adaptors/terraform/aws") {
+        dir("integration-adaptors-deployment/aws") {
           script {
             // prepare variables map
             Map<String, String> variablesMap = [:]
@@ -96,7 +96,7 @@ pipeline {
         lock("${params.Project}-${params.Environment}-${params.Component}")
       }
       steps {
-        dir("integration-adaptors/terraform/aws") {
+        dir("integration-adaptors-deployment/aws") {
           script {
             Map<String, String> variablesMap = [:]
 
