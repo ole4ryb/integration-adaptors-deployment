@@ -5,7 +5,7 @@ Map <String, Map<String, String>> componentImageBranch = [
   nhais:           [ecrRepo: "nhais",                branch: "develop"],
   nhais_responder: [ecrRepo: "nhais-fake-responder", branch: "origin-develop"],
   gp2gp:           [ecrRepo: "gp2gp",                branch: "main"],
-  mhs:             [ecrRepo: "mhs/outbound",         branch: "develop"], // mhs/route and mhs/inboud will have the same tag, no need to search in them
+  mhs:             [ecrRepo: "mhs/outbound",         branch: "main"], // mhs/route and mhs/inboud will have the same tag, no need to search in them
   "lab-results":   [ecrRepo: "lab-results",          branch: "main"],
   pss:             [ecrRepo: "pss_gp2gp-translator", branch: "main"]
 ]
