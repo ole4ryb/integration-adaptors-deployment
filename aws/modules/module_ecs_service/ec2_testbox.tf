@@ -37,7 +37,7 @@ resource "aws_instance" "testbox" {
 
   ami = data.aws_ami.base_linux.id
   instance_type = "t2.micro"
-  key_name = "nia_suport"
+  key_name = "nia_support"
   iam_instance_profile = "TerraformJumpboxRole"
   vpc_security_group_ids = concat(var.additional_security_groups,[aws_security_group.service_sg.id, aws_security_group.testbox_sg[0].id])
   subnet_id = var.container_subnet_ids[0]

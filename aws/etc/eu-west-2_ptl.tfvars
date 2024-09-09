@@ -41,7 +41,7 @@ lab-results_ssl_trust_store_url = "s3://nhsd-aws-truststore/rds-truststore.jks"
 lab-results_mesh_polling_cycle_minimum_interval_in_seconds = 30
 lab-results_mesh_client_wakeup_interval_in_milliseconds = 10000
 lab-results_mesh_polling_cycle_duration_in_seconds = 25
-create_testbox = true
+create_testbox = false
 
 # Settings for "OneOneOne" component
 # Name changed to "OneOneOne" from "111" because of problems with some Terraform names starting with number
