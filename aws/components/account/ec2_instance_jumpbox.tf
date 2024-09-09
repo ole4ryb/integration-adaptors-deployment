@@ -3,7 +3,7 @@ resource "aws_instance" "jumpbox" {
 
   ami = data.aws_ami.base_linux.id
   instance_type = var.jumpbox_size
-  key_name = "kainos-dev"
+  key_name = "nia_support"
   iam_instance_profile = "TerraformJumpboxRole"
   vpc_security_group_ids = [aws_security_group.jumpbox_sg.id]
   subnet_id = aws_subnet.public_subnet.id
