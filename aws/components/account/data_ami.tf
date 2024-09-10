@@ -1,6 +1,6 @@
 data "aws_ami" "base_linux" {
   most_recent      = true
-  name_regex       = "^amzn2-ami-hvm-2.0*"
+  name_regex       = "^al2023-ami-2023*"
   owners           = ["137112412989"]
 
   filter {
